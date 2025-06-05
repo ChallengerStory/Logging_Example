@@ -3,7 +3,17 @@ logging:
   file:
     path: ./logs
   level:
-    root: INFO
-    com.aicube.log_proj: INFO
+    com.aicube: info
 server:
-  port: 8999
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health, info
+  endpoint:
+    prometheus:
+      access: read_only
+  metrics:
+    enable:
+      all: true

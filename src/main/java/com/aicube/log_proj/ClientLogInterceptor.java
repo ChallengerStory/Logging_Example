@@ -2,13 +2,11 @@ package com.aicube.log_proj;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+@Slf4j
 public class ClientLogInterceptor implements HandlerInterceptor {
-    
-    private static final Logger logger = LoggerFactory.getLogger(ClientLogInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
@@ -17,9 +15,8 @@ public class ClientLogInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         String userAgent = request.getHeader("User-Agent");
 
-        logger.info("Client Request - IP: {}, Method: {}, URI: {}, User-Agent: {}", 
+        log.info("Client Request - IP: {}, Method: {}, URI: {}, User-Agent: {}",
                     clientIp, method, uri, userAgent);
-        
         return true;
     }
 } 
