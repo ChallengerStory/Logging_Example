@@ -18,7 +18,7 @@
     </appender>
     
     <!-- File Appender: 로그를 파일에 저장하기 위한 설정 -->
-    <appender name="File" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
             <!-- Console Appender와 동일한 출력 형식을 사용 -->
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>

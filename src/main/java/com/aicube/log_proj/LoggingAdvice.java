@@ -1,4 +1,4 @@
-package com.aicube.log_proj.log;
+package com.aicube.log_proj;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Slf4j
 public class LoggingAdvice {
-    @Around("@annotation(com.aicube.log_proj.log.Logging)")
+    @Around("@annotation(com.aicube.log_proj.Logging)")
     public Object atTarget(ProceedingJoinPoint jp) throws Throwable {
         MethodSignature sig = (MethodSignature) jp.getSignature();
         String className = sig.getDeclaringType().getSimpleName();

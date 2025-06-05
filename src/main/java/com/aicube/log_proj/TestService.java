@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 class TestService {
     private Integer cnt = 0;
 
+    @Logging
     public String findInfo() {
-      cnt++;
-      return "This is a test" + cnt;
+        cnt++;
+        return "This is a test" + cnt;
     }
 }

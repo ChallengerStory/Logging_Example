@@ -1,4 +1,4 @@
-package com.aicube.log_proj.log;
+package com.aicube.log_proj;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

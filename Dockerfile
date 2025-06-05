@@ -15,7 +15,7 @@ RUN chmod +x gradlew
 
 # 소스만 먼저 복사하여 의존성만 다운받기 (레이어 캐싱 활용)
 COPY src /workspace/src
-RUN ./gradlew clean bootJar -x test
+RUN ./gradlew clean bootJar
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 2) Runtime 단계

@@ -19,10 +19,10 @@ public class TestController {
 
     @GetMapping("/test")
     @Timed(
-            value = "order_processing_time",
+            value = "test_processing_time",
             histogram = true,
             percentiles = {0.5, 0.95},
-            serviceLevelObjectives = {5, 10, 50, 200, 1000}
+            serviceLevelObjectives = {5.0, 10.0, 50.0, 200.0, 1000.0}
     )
     public ResponseEntity<?> test(
     ) {
