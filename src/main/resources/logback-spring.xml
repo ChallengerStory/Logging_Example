@@ -27,17 +27,28 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 날짜별로 로그 파일을 생성 -->
             <fileNamePattern>${LOG_PATH}/client-requests.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <!-- 최대 30일간의 로그 파일을 보관 -->
-            <maxHistory>30</maxHistory>
+            <!-- 최대 15일간의 로그 파일을 보관 -->
+            <maxHistory>15</maxHistory>
             <!-- 전체 로그 파일 크기를 최대 3GB로 제한 -->
             <totalSizeCap>3GB</totalSizeCap>
         </rollingPolicy>
+    </appender>
+
+    <!-- AsyncAppender: File Appender를 비동기 queue 처리 -->
+    <appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 실제 로그 출력은 File Appender에게 위임 -->
+        <appender-ref ref="FILE"/>
+        <!-- Queue 사이즈 = 10000(최대 10000개의 로그를 큐에 보관) -->
+        <queueSize>10000</queueSize>
+        <!-- 큐가 가득 찼을 때 정책(가장 오래된 것부터 버리기) -->
+        <discardingThreshold>0</discardingThreshold>
+        <neverBlock>true</neverBlock>
     </appender>
     
     <!-- Root Logger: 전체 로그 레벨과 사용할 Appender를 지정 -->
     <root level="info">
         <!-- 콘솔과 파일 모두에 로그를 출력 -->
         <appender-ref ref="Console"/>
-        <appender-ref ref="File"/>
+        <appender-ref ref="ASYNC_FILE"/>
     </root>
 </configuration> 
